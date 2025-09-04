@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Aral Sea Mystery - A NASA Terra Investigation</title>
+    <meta name="description" content="An interactive detective story uncovering the mystery of the Aral Sea's disappearance using NASA satellite data">
+    
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/detective.css">
+    <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="satellite-loader">
+            <div class="satellite"></div>
+            <div class="orbit"></div>
+        </div>
+        <h2>Accessing NASA Terra Satellite Data...</h2>
+        <div class="loading-bar">
+            <div class="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <button id="audio-toggle" class="audio-btn" aria-label="Toggle Audio">
+            <span class="audio-icon">🔊</span>
+        </button>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="detective-nav">
+        <div class="nav-brand">The Aral Sea Mystery</div>
+        <div class="nav-progress">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <span class="progress-text">Investigation Progress: 0%</span>
+        </div>
+    </nav>
+
+    <!-- Main Story Container -->
+    <main id="story-container">
+        
+        <!-- Chapter 1: The Case File -->
+        <section class="story-section" data-chapter="1">
+            <div class="detective-overlay">
+                <div class="case-file">
+                    <h1 class="case-title">Case File: The Disappearing Sea</h1>
+                    <div class="case-details">
+                        <p><strong>Location:</strong> Central Asia</p>
+                        <p><strong>Date:</strong> 1990 - 2025</p>
+                        <p><strong>Status:</strong> Under Investigation</p>
+                        <p><strong>Investigator:</strong> You</p>
+                    </div>
+                    <div class="case-summary">
+                        <h3>The Mystery</h3>
+                        <p>Once the world's fourth-largest lake, the Aral Sea has mysteriously shrunk by over 90% in just 35 years. Your mission: uncover the truth behind this environmental catastrophe using NASA Terra satellite evidence.</p>
+                    </div>
+                    <button class="begin-investigation-btn">Begin Investigation</button>
+                </div>
+            </div>
+            <div class="background-video">
+                <div class="aral-sea-1990" style="background-image: url('sample/WhatsApp Image 2025-08-29 at 17.40.49_37279892.jpg')"></div>
+            </div>
+        </section>
+
+        <!-- Chapter 2: Evidence Room -->
+        <section class="story-section" data-chapter="2">
+            <div class="evidence-room">
+                <h2 class="chapter-title">Evidence Room</h2>
+                <div class="evidence-grid">
+                    <div class="evidence-item" data-evidence="satellite">
+                        <div class="evidence-image">
+                            <img src="sample/WhatsApp Image 2025-08-29 at 17.40.49_4e672a3f.jpg" alt="Satellite imagery of Aral Sea">
+                        </div>
+                        <h3>Satellite Evidence</h3>
+                        <p>NASA Terra satellite images spanning 25+ years</p>
+                    </div>
+                    <div class="evidence-item" data-evidence="water">
+                        <div class="evidence-chart">
+                            <canvas id="water-level-chart"></canvas>
+                        </div>
+                        <h3>Water Level Data</h3>
+                        <p>Dramatic decline in water volume</p>
+                    </div>
+                    <div class="evidence-item" data-evidence="population">
+                        <div class="evidence-chart">
+                            <canvas id="population-chart"></canvas>
+                        </div>
+                        <h3>Population Impact</h3>
+                        <p>Effects on local communities</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3: The Timelapse Investigation -->
+        <section class="story-section" data-chapter="3">
+            <div class="timelapse-container">
+                <h2 class="chapter-title">Witness the Transformation</h2>
+                <div class="timelapse-viewer">
+                    <div class="timelapse-controls">
+                        <button id="play-timelapse" class="timelapse-btn">▶ Play Timelapse</button>
+                        <div class="year-slider">
+                            <input type="range" id="year-range" min="1990" max="2025" value="1990" step="1">
+                            <div class="year-display">Year: <span id="current-year">1990</span></div>
+                        </div>
+                    </div>
+                    <div class="timelapse-images">
+                        <img id="timelapse-img" src="sample/WhatsApp Image 2025-08-29 at 17.40.49_37279892.jpg" alt="Aral Sea over time">
+                    </div>
+                    <div class="observation-notes">
+                        <h3>Detective Notes</h3>
+                        <div id="year-observations">
+                            <p>1990: The Aral Sea appears full and vibrant...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4: Interactive Map Investigation -->
+        <section class="story-section" data-chapter="4">
+            <div class="map-investigation">
+                <h2 class="chapter-title">Geographic Analysis</h2>
+                <div class="map-container">
+                    <div id="investigation-map"></div>
+                    <div class="map-controls">
+                        <div class="layer-controls">
+                            <h4>Investigation Layers</h4>
+                            <label><input type="checkbox" id="water-bodies" checked> Water Bodies</label>
+                            <label><input type="checkbox" id="irrigation" checked> Irrigation Systems</label>
+                            <label><input type="checkbox" id="settlements"> Settlements</label>
+                            <label><input type="checkbox" id="cotton-fields"> Cotton Fields</label>
+                        </div>
+                        <div class="timeline-control">
+                            <h4>Time Period</h4>
+                            <select id="map-year">
+                                <option value="1990">1990</option>
+                                <option value="2000">2000</option>
+                                <option value="2010">2010</option>
+                                <option value="2020">2020</option>
+                                <option value="2025">2025</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 5: Data Analysis -->
+        <section class="story-section" data-chapter="5">
+            <div class="data-analysis">
+                <h2 class="chapter-title">Analyzing the Clues</h2>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <h3>Water Usage by Sector</h3>
+                        <canvas id="water-usage-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Cotton Production vs. Sea Level</h3>
+                        <canvas id="cotton-vs-sea-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Temperature Changes</h3>
+                        <canvas id="temperature-chart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Economic Impact</h3>
+                        <canvas id="economic-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6: What-If Simulator -->
+        <section class="story-section" data-chapter="6">
+            <div class="simulator-section">
+                <h2 class="chapter-title">The What-If Simulator</h2>
+                <p class="simulator-intro">What if different decisions had been made? Explore alternative scenarios...</p>
+                
+                <div class="simulator-container">
+                    <div class="scenario-controls">
+                        <h3>Scenario Parameters</h3>
+                        
+                        <div class="control-group">
+                            <label for="irrigation-efficiency">Irrigation Efficiency</label>
+                            <input type="range" id="irrigation-efficiency" min="30" max="90" value="45" step="5">
+                            <span class="value-display">45%</span>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="cotton-area">Cotton Cultivation Area</label>
+                            <input type="range" id="cotton-area" min="0" max="100" value="80" step="10">
+                            <span class="value-display">80%</span>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label for="water-policy">Water Conservation Policy</label>
+                            <select id="water-policy">
+                                <option value="none">No Policy</option>
+                                <option value="moderate">Moderate Conservation</option>
+                                <option value="strict">Strict Conservation</option>
+                            </select>
+                        </div>
+                        
+                        <button id="run-simulation" class="simulation-btn">Run Simulation</button>
+                    </div>
+                    
+                    <div class="simulation-results">
+                        <h3>Projected Sea Level</h3>
+                        <div class="sea-level-visualization">
+                            <div class="sea-level-bar">
+                                <div class="current-level"></div>
+                                <div class="projected-level"></div>
+                            </div>
+                            <div class="level-labels">
+                                <span>1990 Level</span>
+                                <span>2025 Actual</span>
+                                <span>Your Scenario</span>
+                            </div>
+                        </div>
+                        <div id="simulation-feedback" class="feedback-text">
+                            Adjust the parameters above to see how different policies might have affected the Aral Sea.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 7: The Verdict -->
+        <section class="story-section" data-chapter="7">
+            <div class="verdict-section">
+                <h2 class="chapter-title">Case Closed: The Verdict</h2>
+                <div class="verdict-content">
+                    <div class="case-summary-final">
+                        <h3>Investigation Summary</h3>
+                        <div class="key-findings">
+                            <div class="finding">
+                                <h4>Primary Cause</h4>
+                                <p>Massive irrigation projects for cotton cultivation diverted the Amu Darya and Syr Darya rivers, the Aral Sea's primary water sources.</p>
+                            </div>
+                            <div class="finding">
+                                <h4>Scale of Impact</h4>
+                                <p>The sea lost over 90% of its volume, transforming from 68,000 km² to just 7,000 km² today.</p>
+                            </div>
+                            <div class="finding">
+                                <h4>Human Cost</h4>
+                                <p>Millions affected by health issues, economic loss, and environmental displacement.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lessons-learned">
+                        <h3>Lessons for the Future</h3>
+                        <ul>
+                            <li>Sustainable water management is crucial</li>
+                            <li>Economic development must consider environmental impact</li>
+                            <li>International cooperation is essential for shared resources</li>
+                            <li>Technology can help monitor and prevent such disasters</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="call-to-action">
+                        <h3>Continue the Investigation</h3>
+                        <p>This story demonstrates the power of satellite data in understanding our changing planet. NASA's Terra satellite continues to monitor Earth's systems, providing crucial data for scientists, policymakers, and citizens.</p>
+                        <div class="action-buttons">
+                            <button class="share-btn">Share This Story</button>
+                            <button class="restart-btn">Restart Investigation</button>
+                            <a href="#" class="learn-more-btn">Learn More About NASA Terra</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Audio Elements -->
+    <audio id="ambient-water" loop>
+        <source src="audio/water-flowing.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ambient-wind" loop>
+        <source src="audio/desert-wind.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="investigation-music" loop>
+        <source src="audio/investigation-theme.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/scrollama"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/detective.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/timelapse.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/simulator.js"></script>
+    <script src="js/audio.js"></script>
+</body>
+</html>

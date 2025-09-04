@@ -1,0 +1,519 @@
+/* Detective Theme Specific Styles */
+
+/* Map Investigation */
+.map-investigation {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.map-container {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+#investigation-map {
+    height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 2px solid rgba(243, 156, 18, 0.3);
+    box-shadow: 0 10px 30px var(--shadow-dark);
+}
+
+.map-controls {
+    background: rgba(22, 33, 62, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    height: fit-content;
+}
+
+.layer-controls h4,
+.timeline-control h4 {
+    color: var(--gold-color);
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+}
+
+.layer-controls label {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.layer-controls label:hover {
+    color: var(--gold-color);
+}
+
+.layer-controls input[type="checkbox"] {
+    margin-right: 0.5rem;
+    accent-color: var(--gold-color);
+}
+
+.timeline-control {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+#map-year {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    background: rgba(26, 26, 46, 0.7);
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+#map-year:focus {
+    outline: none;
+    border-color: var(--gold-color);
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+}
+
+/* Data Analysis */
+.data-analysis {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.chart-container {
+    background: rgba(22, 33, 62, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px var(--shadow-dark);
+    border-color: var(--gold-color);
+}
+
+.chart-container h3 {
+    color: var(--gold-color);
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.chart-container canvas {
+    max-width: 100%;
+    height: 300px;
+}
+
+/* Simulator Section */
+.simulator-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.simulator-intro {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.simulator-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.scenario-controls {
+    background: rgba(22, 33, 62, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.scenario-controls h3 {
+    color: var(--gold-color);
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.control-group {
+    margin-bottom: 2rem;
+}
+
+.control-group label {
+    display: block;
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+    margin-bottom: 0.5rem;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold-color);
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--gold-color);
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+}
+
+.value-display {
+    color: var(--gold-color);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.control-group select {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    background: rgba(26, 26, 46, 0.7);
+    color: var(--text-light);
+    font-size: 1rem;
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: var(--gold-color);
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+}
+
+.simulation-btn {
+    width: 100%;
+    background: linear-gradient(135deg, var(--detective-green), #219a52);
+    border: none;
+    padding: 1.2rem 2rem;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.simulation-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(39, 174, 96, 0.4);
+}
+
+.simulation-results {
+    background: rgba(22, 33, 62, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.simulation-results h3 {
+    color: var(--gold-color);
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.sea-level-visualization {
+    margin-bottom: 2rem;
+}
+
+.sea-level-bar {
+    height: 200px;
+    background: rgba(26, 26, 46, 0.7);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    border: 2px solid rgba(243, 156, 18, 0.3);
+}
+
+.current-level,
+.projected-level {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: height 1s ease;
+}
+
+.current-level {
+    background: linear-gradient(to top, #3498db, #5dade2);
+    height: 20%;
+    opacity: 0.7;
+}
+
+.projected-level {
+    background: linear-gradient(to top, var(--detective-green), #58d68d);
+    height: 20%;
+}
+
+.level-labels {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.feedback-text {
+    color: var(--text-light);
+    line-height: 1.6;
+    text-align: center;
+    padding: 1rem;
+    background: rgba(26, 26, 46, 0.5);
+    border-radius: 10px;
+    border-left: 4px solid var(--accent-color);
+}
+
+/* Verdict Section */
+.verdict-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.verdict-content {
+    background: rgba(22, 33, 62, 0.9);
+    border-radius: 15px;
+    padding: 3rem;
+    border: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.case-summary-final h3 {
+    color: var(--gold-color);
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.key-findings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.finding {
+    background: rgba(26, 26, 46, 0.7);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--accent-color);
+}
+
+.finding h4 {
+    color: var(--gold-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
+}
+
+.finding p {
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+.lessons-learned {
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.lessons-learned h3 {
+    color: var(--gold-color);
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.lessons-learned ul {
+    list-style: none;
+    padding: 0;
+}
+
+.lessons-learned li {
+    color: var(--text-light);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(26, 26, 46, 0.5);
+    border-radius: 8px;
+    border-left: 4px solid var(--detective-green);
+    position: relative;
+    padding-left: 3rem;
+}
+
+.lessons-learned li::before {
+    content: '✓';
+    position: absolute;
+    left: 1rem;
+    color: var(--detective-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.call-to-action {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(243, 156, 18, 0.3);
+}
+
+.call-to-action h3 {
+    color: var(--gold-color);
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.call-to-action p {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.share-btn,
+.restart-btn,
+.learn-more-btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+}
+
+.share-btn {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+}
+
+.restart-btn {
+    background: linear-gradient(135deg, var(--accent-color), #c0392b);
+    color: white;
+}
+
+.learn-more-btn {
+    background: linear-gradient(135deg, var(--gold-color), #e67e22);
+    color: white;
+}
+
+.share-btn:hover,
+.restart-btn:hover,
+.learn-more-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design for Detective Elements */
+@media (max-width: 1024px) {
+    .map-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .map-controls {
+        order: -1;
+    }
+    
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-container canvas {
+        height: 250px;
+    }
+    
+    .simulator-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .key-findings {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .share-btn,
+    .restart-btn,
+    .learn-more-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-controls,
+    .scenario-controls,
+    .simulation-results {
+        padding: 1.5rem;
+    }
+    
+    .verdict-content {
+        padding: 2rem;
+    }
+    
+    .charts-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .chart-container {
+        padding: 1.5rem;
+    }
+    
+    .chart-container canvas {
+        height: 200px;
+    }
+}
